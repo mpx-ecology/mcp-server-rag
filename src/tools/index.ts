@@ -4,20 +4,21 @@ import { api } from "../common/api.js"
 
 export function registerTools(server: McpServer) {
   server.tool(
-    "search_knowledge_base",
-    "Search the knowledge base for relevant information",
+    "search_mpx_knowledge_base",
+    "Search the Mpx RAG knowledge base for relevant information",
     {
       query: z.string().describe("The user's question or query"),
     },
     async ({ query }) => {
       try {
-        // 这里我们假设你的 API 端点是 /api/rag/search
-        // 实际使用时请替换成你的真实 API 端点
-        const result = await api.post<{ text: string }>("/api/rag/search", {
+        const result = await api.post<{ answer: string }>("", {
           query,
+          inputs: {},
+          user: "guest",
+          response_mode: "blocking",
         })
 
-        const content = result.text.trim()
+        const content = result.answer?.trim()
         if (!content) {
           return {
             content: [

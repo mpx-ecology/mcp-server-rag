@@ -11,9 +11,13 @@ export interface ApiConfig {
 }
 
 const DEFAULT_CONFIG: ApiConfig = {
-  baseUrl: "http://localhost:3000",
+  baseUrl: "https://api.dify.ai/v1",
   headers: {
+    "User-Agent":
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
     "Content-Type": "application/json",
+    // TODO secret management
+    Authorization: "Bearer app-EfefRG5yMpeVFZpy8viUsezW",
   },
   timeout: 30000,
 }
@@ -74,6 +78,8 @@ export async function apiRequest<T>(
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), timeout)
 
+  console.log("---> debug", url, method, currentConfig.headers, body)
+
   try {
     const response = await fetch(url, {
       method,
@@ -86,6 +92,7 @@ export async function apiRequest<T>(
     })
 
     if (!response.ok) {
+      console.log('---> debug', response)
       throw new ApiError(
         response.status,
         response.statusText,
@@ -94,6 +101,8 @@ export async function apiRequest<T>(
     }
 
     const data = (await response.json()) as ApiResponse<T>
+
+    console.log("---> debug response", data)
 
     if (data.code !== 0) {
       throw new Error(`API returned error: ${data.message || "Unknown error"}`)

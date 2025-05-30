@@ -1,7 +1,7 @@
 import { api } from "./../src/common/api"
 
 const fn = async (query: string) => {
-  const result = await api.post<{ answer: string }>("", {
+  const result = await api.post<{ answer: string }>("chat-messages", {
     query,
     inputs: {},
     user: "guest",

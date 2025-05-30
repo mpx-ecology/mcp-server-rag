@@ -11,7 +11,7 @@ export function registerTools(server: McpServer) {
     },
     async ({ query }) => {
       try {
-        const result = await api.post<{ answer: string }>("", {
+        const result = await api.post("chat-messages", {
           query,
           inputs: {},
           user: "guest",

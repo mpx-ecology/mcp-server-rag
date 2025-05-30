@@ -11,14 +11,12 @@ export interface ApiConfig {
 }
 
 const DEFAULT_CONFIG: ApiConfig = {
-  baseUrl: "https://api.dify.ai/v1",
+  baseUrl: "https://api.dify.ai/v1/",
   headers: {
-    "User-Agent":
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
     "Content-Type": "application/json",
     // TODO secret management
   },
-  timeout: 30000,
+  timeout: 1000 * 60 * 3, // 3 minutes
 }
 
 let currentConfig: ApiConfig = { ...DEFAULT_CONFIG }
@@ -27,10 +25,10 @@ export function configureApi(config: Partial<ApiConfig>) {
   currentConfig = { ...currentConfig, ...config }
 }
 
-export interface ApiResponse<T> {
-  code: number
-  message: string
-  data: T
+export interface ApiResponse {
+  code?: number
+  message?: string
+  answer?: string
 }
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
@@ -57,7 +55,7 @@ export async function apiRequest<T>(
   endpoint: string,
   options: RequestOptions = {},
   params?: Record<string, string | number>
-): Promise<T> {
+): Promise<ApiResponse> {
   const {
     method = "GET",
     headers = {},
@@ -91,7 +89,7 @@ export async function apiRequest<T>(
     })
 
     if (!response.ok) {
-      console.log('---> debug', response)
+      console.log("---> debug", response)
       throw new ApiError(
         response.status,
         response.statusText,
@@ -99,15 +97,13 @@ export async function apiRequest<T>(
       )
     }
 
-    const data = (await response.json()) as ApiResponse<T>
-
-    console.log("---> debug response", data)
+    const data = (await response.json()) as ApiResponse
 
     if (data.code !== 0) {
       throw new Error(`API returned error: ${data.message || "Unknown error"}`)
     }
 
-    return data.data
+    return data
   } finally {
     clearTimeout(timeoutId)
   }

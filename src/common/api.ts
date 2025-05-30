@@ -75,8 +75,6 @@ export async function apiRequest<T>(
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), timeout)
 
-  console.log("---> debug", url, method, currentConfig.headers, body)
-
   try {
     const response = await fetch(url, {
       method,
@@ -89,7 +87,6 @@ export async function apiRequest<T>(
     })
 
     if (!response.ok) {
-      console.log("---> debug", response)
       throw new ApiError(
         response.status,
         response.statusText,
@@ -99,7 +96,7 @@ export async function apiRequest<T>(
 
     const data = (await response.json()) as ApiResponse
 
-    if (data.code !== 0) {
+    if (!data.answer) {
       throw new Error(`API returned error: ${data.message || "Unknown error"}`)
     }
 

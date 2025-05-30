@@ -1,21 +1,20 @@
 {
-  "name": "@jojojs/mcp-server-starter",
-  "version": "0.0.7",
+  "name": "@mpxjs/mcp-server-rag",
+  "version": "0.0.1",
   "packageManager": "pnpm@10.11.0",
-  "description": "Starter template for TS MCP-Server",
+  "description": "MCP-Server for Mpx Docs RAG",
   "license": "MIT",
   "author": "Soon Wang",
   "type": "module",
   "keywords": [
-    "mcp",
     "mcp-server",
-    "template",
-    "modelcontextprotocol"
+    "mpx",
+    "RAG"
   ],
-  "homepage": "https://github.com/jojojs-lab/mcp-server-starter",
-  "bugs": "https://github.com/jojojs-lab/mcp-server-starter/issues",
+  "homepage": "https://github.com/mpx-ecology/mcp-server-rag",
+  "bugs": "https://github.com/mpx-ecology/mcp-server-rag/issues",
   "bin": {
-    "mcp-server-starter": "dist/index.js"
+    "mcp-server-mpx-rag": "dist/index.js"
   },
   "files": [
     "dist"

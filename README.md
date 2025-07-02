@@ -41,3 +41,9 @@
   }
 }
 ```
+
+## 演示
+
+VS Code 中通过 Copilot Chat 调用 MCP Server 如下：
+
+<img width="430" alt="mpx-rag-mcp-server" src="https://github.com/user-attachments/assets/84f1a5d2-4b73-474e-9e67-cdcf98692bf5" />

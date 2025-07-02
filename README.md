@@ -13,7 +13,7 @@
   // ..
   "mcp": {
     "servers": {
-      "mcp-server-mpx-rag": {
+      "mpx-rag": {
         "type": "stdio",
         "command": "npx",
         "args": ["-y", "@mpxjs/mcp-server-rag"]
@@ -30,7 +30,7 @@
   // ..
   "mcp": {
     "servers": {
-      "mcp-server-mpx-rag": {
+      "mpx-rag": {
         "type": "stdio",
         "command": "node",
         "args": ["/Users/didi/mycode/github/mcp-server-rag/dist/index.js"]

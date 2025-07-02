@@ -15,6 +15,7 @@ const DEFAULT_CONFIG: ApiConfig = {
   headers: {
     "Content-Type": "application/json",
     // TODO secret management
+    Authorization: "Bearer app-EfefRG5yMpeVFZpy8viUsezW",
   },
   timeout: 1000 * 60 * 3, // 3 minutes
 }

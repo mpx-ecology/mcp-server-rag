@@ -11,6 +11,9 @@
     "mpx",
     "RAG"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/mpx-ecology/mcp-server-rag",
   "bugs": "https://github.com/mpx-ecology/mcp-server-rag/issues",
   "bin": {

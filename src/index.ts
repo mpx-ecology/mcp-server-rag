@@ -4,8 +4,8 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { registerTools } from "./tools/index.js"
 
 const server = new McpServer({
-  name: "mcp-server-starter",
-  version: "0.0.1",
+  name: "mcp-server-mpx-rag",
+  version: "1.0.0",
 })
 
 async function main() {

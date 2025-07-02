@@ -44,4 +44,4 @@
 
 VS Code 中通过 Copilot Chat 调用 MCP Server 如下：
 
-<img width="430" alt="mpx-rag-mcp-server" src="https://github.com/user-attachments/assets/84f1a5d2-4b73-474e-9e67-cdcf98692bf5" />
+<img width="420" alt="mpx-rag" src="https://github.com/user-attachments/assets/2def560e-08ee-414a-a419-38ba05235bde" />
